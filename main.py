@@ -13,8 +13,8 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 def fetch_data():
     # Membaca tab data_nasabah dan data_mutasi dengan TTL=0 agar selalu update
-    df_n = conn.read(worksheet="data_nasabah", ttl="0")
-    df_m = conn.read(worksheet="data_mutasi", ttl="0")
+    df_n = conn.read(worksheet="data_nasabah", ttl=0)
+    df_m = conn.read(worksheet="data_mutasi", ttl=0)
     # Pastikan kolom Saldo adalah angka
     df_n['Saldo'] = pd.to_numeric(df_n['Saldo'])
     return df_n, df_m
